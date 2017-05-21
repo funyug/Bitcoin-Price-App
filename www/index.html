@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="lib/js/jquery.min.js"></script>
+    <script src="lib/js/socket.min.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter" ng-controller="priceController">
+
+    <ion-pane>
+      <ion-content>
+        <div class="title-text">
+          Average Bitcoin Price
+        </div>
+        <div class="avg_price">
+        {{avgPrice | number:2}}
+        </div>
+        <div>
+          <table>
+            <thead>
+              <th>Exchange</th>
+              <th>Buy Price</th>
+              <th>Sell Price</th>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Zebpay</td>
+              <td>{{data.zebpayBuyPrice | number}}</td>
+              <td>{{data.zebpaySellPrice | number}}</td>
+            </tr>
+            <tr>
+              <td>Unocoin</td>
+              <td>{{data.unocoinBuyPrice | number}}</td>
+              <td>{{data.unocoinSellPrice | number}}</td>
+            </tr>
+            <tr>
+              <td>Coinsecure</td>
+              <td>{{data.coinsecureBuyPrice | number}}</td>
+              <td>{{data.coinsecureSellPrice | number}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="footer">
+          Donate : 12eC8MnZzVaxGGntWJyQuf2MKw7Zj4BFMU
+        </div>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
