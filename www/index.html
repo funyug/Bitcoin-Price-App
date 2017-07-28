@@ -43,8 +43,12 @@
         <div class="title-text">
           Average Bitcoin Price
         </div>
-        <div class="avg_price">
+        <div class="avg_price" ng-if="avgPrice">
         {{avgPrice | number:2}}
+        </div>
+
+        <div class="avg_price" ng-if="!avgPrice">
+          Please Wait
         </div>
         <div>
           <table>
@@ -69,11 +73,16 @@
               <td>{{data.coinsecureBuyPrice | number}}</td>
               <td>{{data.coinsecureSellPrice | number}}</td>
             </tr>
+            <tr>
+              <td>PocketBits</td>
+              <td>{{data.pocketBitsBuyPrice | number}}</td>
+              <td>{{data.pocketBitsSellPrice | number}}</td>
+            </tr>
             </tbody>
           </table>
         </div>
         <div class="footer">
-          Donate : 12eC8MnZzVaxGGntWJyQuf2MKw7Zj4BFMU
+          <a href="bitcoin:3E1vJTdKqBPewSepnVNjsoy7MPQonwy8X4" style="color:black">Donate : 3E1vJTdKqBPewSepnVNjsoy7MPQonwy8X4</a>
         </div>
       </ion-content>
     </ion-pane>

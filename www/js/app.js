@@ -25,10 +25,9 @@ var app = angular.module('starter', ['ionic'])
 
 app.controller('priceController',function($scope,$http) {
   $scope.data = {};
-  $scope.data.zebpayBuyPrice = 0;
-  $scope.data.zebpaySellPrice = 0;
   $scope.data.avgPrice = 0;
   var socket = io.connect("http://shivamchawla.net:3001/price");
+  //var socket = io.connect("http://localhost:3001/price");
   socket.on('price', function(msg){
     $scope.data.zebpayBuyPrice = msg.zebpayBuyPrice;
     $scope.data.zebpaySellPrice = msg.zebpaySellPrice;
@@ -36,6 +35,8 @@ app.controller('priceController',function($scope,$http) {
     $scope.data.unocoinSellPrice = msg.unocoinSellPrice;
     $scope.data.coinsecureBuyPrice = msg.coinsecureBuyPrice;
     $scope.data.coinsecureSellPrice = msg.coinsecureSellPrice;
+    $scope.data.pocketBitsBuyPrice = msg.pocketBitsBuyPrice;
+    $scope.data.pocketBitsSellPrice = msg.pocketBitsSellPrice;
 
     var totalPrice = 0;
     var totalExchanges = 0;
@@ -59,8 +60,17 @@ app.controller('priceController',function($scope,$http) {
       totalPrice = totalPrice + $scope.data.coinsecureBuyPrice;
       totalExchanges++;
     }
-    if(msg.zebpayBuyPrice) {
+    if(msg.coinsecureSellPrice) {
       totalPrice = totalPrice + $scope.data.coinsecureSellPrice;
+      totalExchanges++;
+    }
+
+    if(msg.pocketBitsBuyPrice) {
+      totalPrice = totalPrice + $scope.data.pocketBitsBuyPrice;
+      totalExchanges++;
+    }
+    if(msg.pocketBitsSellPrice) {
+      totalPrice = totalPrice + $scope.data.pocketBitsSellPrice;
       totalExchanges++;
     }
     $scope.avgPrice = totalPrice/totalExchanges;

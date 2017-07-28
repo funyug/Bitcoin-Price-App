@@ -7,12 +7,12 @@ ion-content{
   background-color: #F7941E;
 }
 .title-text {
-  margin-top:30%;
+  margin-top:10%;
   text-align: center;
   font-size: 20px;
 }
 .avg_price {
-  margin-top:10%;
+  margin-top:5%;
   font-size: 40px;
   text-align: center;
 }
@@ -42,6 +42,7 @@ td,th {
   padding: 10px;
 }
 .footer {
-  margin-top:20%;
+  bottom:0;
   text-align: center;
+  margin-top:30%;
 }
