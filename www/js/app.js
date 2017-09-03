@@ -20,10 +20,16 @@ var app = angular.module('starter', ['ionic'])
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
+    if(typeof analytics !== 'undefined') {
+      window.analytics.startTrackerWithId('UA-104875174-1', 30);
+      window.analytics.trackView('Homepage');
+    }
+    else {
+      console.log("Google Analytics Unavailable");
+    }
   });
 });
-
-app.controller('priceController',function($scope,$http) {
+app.controller('priceController',function($scope) {
   $scope.data = {};
   $scope.data.avgPrice = 0;
   var socket = io.connect("http://shivamchawla.net:3001/price");
